@@ -2,7 +2,7 @@
 blog application (CRUD) with neurelo
 
 
-# Most of the code is for managing things logic for CRUD => One Liner
+## Most of the code is for managing things, logic is just one  liner with neurelo 
 
 1. retrive user information by user_id ==> 
 
