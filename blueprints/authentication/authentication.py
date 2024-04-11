@@ -18,7 +18,6 @@ def login():
             session['user_id'] = user_data['user_id'] 
             session['username'] = user_data['username'] 
             session['email'] = user_data['email']
-            # return f"you are ok {session['username']}"
             return redirect(url_for('posts.get_posts_by_user_id',user_id=session['user_id']))
         else: ## if there is no match found return with message
             return render_template("login.html", message="User does not exist") 

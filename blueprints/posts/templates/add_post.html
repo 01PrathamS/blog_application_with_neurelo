@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div  style="width: 500px; margin: auto;">
+        <h3 class="text-black my-5">Dashboard/Add Post</h3>
+        <form action="{{ url_for('posts.add_post_by_user_id', user_id=session['user_id']) }}" method="post" novalidate>
+            <div>
+                <label for="title" class="text-black">Title</label>
+                <input type="text" name="title" id="title" class="form-control" style="width: 80%;border-color: black;" required>
+                <label for="content" class="text-black">Content</label>
+                <textarea name="content" id="content" class="form-control" style="width: 80%;border-color: black;height: 200px;" required></textarea>
+            </div>
+            <br>
+            <input type="submit" value="Add" class="btn btn-success">
+            <a href="{{ url_for('posts.get_posts_by_user_id', user_id=session['user_id']) }}" class="btn btn-danger">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
