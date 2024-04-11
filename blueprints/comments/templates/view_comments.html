@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: gray;
+        }
+        .container1 {
+            margin-top: 7%;
+        }
+        .container2 {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            float: left;
+            width: 30%;
+            height: 300px;
+            padding-top: 5%;
+            margin-left: 9%;
+        }
+        .container3 {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            float: right;
+            width: 50%;
+            height: auto;
+            margin-right: 10%;
+        }
+        li {
+            color: black;
+            font-size: 20px;
+            margin-top: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="container2">
+            <h3 style="text-align: center;">Comment</h3>
+            <form action="{{ url_for('comments.add_comment_by_post_id', post_id=id) }}" method="post" novalidate>
+                <div style="margin-left: 2%">
+                    <label for="comment" class="text-black">write a comment</label>
+                    <textarea name="comment" id="comment" class="form-control" style="width: 95%;border-color: black;" required></textarea>
+                </div>
+                <br>
+                <div style="padding-left: 40%;">
+                    <input type="submit" value="Add" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+        <div class="container3">
+            <ul>
+                {% if comments %}
+                    {% for comment in comments %}
+                        <li>{{ comment.comment }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No comments yet</li>
+                {% endif %}
+            </ul>
+            <a href="{{ url_for('index') }}" class="btn btn-dark" style="margin-left: 5%;margin-bottom: 2%;">Back</a>
+        </div>
+    </div>
+</body>
+</html>

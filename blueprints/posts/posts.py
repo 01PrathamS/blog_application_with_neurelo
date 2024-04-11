@@ -5,6 +5,12 @@ from configuration import posts_api
 
 posts = Blueprint('posts', __name__, template_folder='templates', url_prefix='/posts')
 
+# @posts.route('/get_posts')
+def get_all_posts():
+    select = models.PostsSelectInput.from_dict({"$scalars": True, "$related": True})
+    posts = posts_api.find_posts(select)
+    return posts.to_dict()['data']
+
 @posts.route('/get_posts/<user_id>')
 def get_posts_by_user_id(user_id):
     select = models.PostsSelectInput.from_dict({"$scalars": True, "$related": True})
@@ -42,4 +48,16 @@ def edit_post_by_post_id(post_id):
         post = posts_api.find_posts_by_post_id((post_id), select=models.PostsSelectInput(title=True, content=True))
         return render_template('edit_post.html', post=post.to_dict()['data'], post_id=post_id)
  
+@posts.route('delete_post/<post_id>', methods=['POST', 'GET']) 
+def delete_post_by_post_id(post_id):
+    if session['user_id']:
+        posts_api.delete_posts_by_post_id(post_id) 
+        return redirect(url_for('posts.get_posts_by_user_id', user_id=session['user_id']))
+    else: 
+        return redirect(url_for('authentication.login')) 
+    
 
+@posts.route('view_post/<post_id>', methods=['GET'])
+def get_post_by_post_id(post_id):
+    post = posts_api.find_posts_by_post_id((post_id), select=models.PostsSelectInput(related=True, scalars=True))
+    return render_template('view_post.html', post=post.to_dict()['data'])

@@ -53,9 +53,9 @@
                                 <td>{{ post.title }}</td>
                                 <td>{{ post.content }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-light btn-sm">Comment</a>
+                                    <a href="{{  url_for('comments.get_comments_by_post_id', post_id=post.post_id) }}" class="btn btn-light btn-sm">Comments</a>
                                     <a href="{{  url_for('posts.edit_post_by_post_id', post_id=post.post_id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="{{ url_for('posts.delete_post_by_post_id', post_id=post.post_id) }}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         {% endfor %}

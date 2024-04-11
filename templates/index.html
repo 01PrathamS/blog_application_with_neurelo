@@ -5,8 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container1 {
+            border: 2px solid black;
+            border-radius: 12px; 
+            margin-top: 1%;
+            background-color: black;
+            color: white;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        .container2 {
+            /* border: 2px solid white;
+            border-radius: 12px;  */
+            margin-top: 1%;
+            height: 150px;
+            /* margin-top:5%; */
+            margin-left: 6%;
+            margin-right: 4%;
+        }
+        .container3 {
+            /* border: 2px solid white;
+            border-radius: 12px;  */
+            /* margin-top: 1%; */
+            height: 100px;
+            margin-left: 4%;
+            margin-right: 4%;
+        }
+    
+    </style>
 </head>
 <body>
     {% include 'navbar.html' %}
+    <div>  
+        {% for post in posts %}
+            <div class="container1" >
+                <h1 style="margin-left: 7%; margin-top:2%;">{{ post.posts_users_ref.username }}</h1>
+                <div class="container2">
+                    <h1 class="display-4 font-weight-bold">{{ post.title }}</h1>
+                    {% if post.content|length > 100 %}
+                        <p>{{ post.content[:100] }}...</p>
+                        <button class="btn btn-link btn-sm read-more">Read More</button>
+                    {% else %}
+                        <p>{{ post.content }}</p>
+                    {% endif %}
+                </div>
+                <div class="container3">
+                    <a href="{{ url_for('posts.get_post_by_post_id', post_id=post.post_id) }}" class="btn btn-dark">View</a>
+                    <a href="{{ url_for('comments.get_comments_by_post_id', post_id=post.post_id) }}" class="btn btn-dark" style="margin-left: 0.5%;">Comments(#)</a> 
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
