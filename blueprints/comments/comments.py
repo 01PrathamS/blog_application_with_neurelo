@@ -13,7 +13,7 @@ def get_comments_by_post_id(post_id):
 
 @comments.route('/add_comment/<post_id>', methods=['POST', 'GET'])
 def add_comment_by_post_id(post_id): 
-    if request.method == "GET":
+    if request.method == "POST":
         comment = request.form['comment']
         user_id = session['user_id']
         comment_input = models.CommentsCreateInput(comment=comment,
@@ -22,7 +22,4 @@ def add_comment_by_post_id(post_id):
         comments_api.create_one_comments(comment_input)
         return redirect(url_for('index'))
     else: 
-        print("**********")
-        print(type(post_id))
-        print("**********")
         return render_template('view_comments.html', id=post_id)
