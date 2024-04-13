@@ -23,3 +23,19 @@ def add_comment_by_post_id(post_id):
         return redirect(url_for('index'))
     else: 
         return render_template('view_comments.html', id=post_id)
+    
+# @comments.route('count_comments/<post_id>')
+def count_comments_by_post_id(post_id):
+    select = models.CommentsAggregateInput.from_dict({"_count": ["comment"]})
+    filter = models.CommentsWhereInput.from_dict({"post_id": int(post_id)})
+    count = comments_api.aggregate_by_comments(select, filter) 
+    return jsonify(count.to_dict())
+
+"""
+{
+  "data": {
+    "_count": {
+      "comment": 6
+    }
+  }
+}"""

@@ -51,8 +51,9 @@
                     {% endif %}
                 </div>
                 <div class="container3">
+                    <a href="#" class="btn btn-dark">&#128151 {{ post.posts_likes_ref|length }}</a>
                     <a href="{{ url_for('posts.get_post_by_post_id', post_id=post.post_id) }}" class="btn btn-dark">View</a>
-                    <a href="{{ url_for('comments.get_comments_by_post_id', post_id=post.post_id) }}" class="btn btn-dark" style="margin-left: 0.5%;">Comments(#)</a> 
+                    <a href="{{ url_for('comments.get_comments_by_post_id', post_id=post.post_id) }}" class="btn btn-dark" style="margin-left: 0.5%;">Comments({{ post.posts_comments_ref|length }})</a> 
                 </div>
             </div>
         {% endfor %}
