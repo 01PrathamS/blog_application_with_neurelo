@@ -5,10 +5,8 @@ from neurelo.configuration import Configuration
 from neurelo.api_client import ApiClient 
 from neurelo.api.posts_api import PostsApi
 from neurelo.api.users_api import UsersApi 
+from neurelo.api.likes_api import LikesApi
 from neurelo.api.comments_api import CommentsApi
-from neurelo.models import (UsersCreateInput,UsersSelectInput, UsersUpdateInput,
-                            PostsCreateInput, PostsSelectInput, PostsUpdateInput, 
-                            CommentsCreateInput, CommentsSelectInput, CommentsUpdateInput)
 
 load_dotenv() 
 
@@ -26,3 +24,4 @@ api_client = ApiClient(configuration=configuration)
 users_api = UsersApi(api_client)
 posts_api = PostsApi(api_client)
 comments_api = CommentsApi(api_client)
+likes_api = LikesApi(api_client)

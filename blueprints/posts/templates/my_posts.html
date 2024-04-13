@@ -29,6 +29,7 @@
             {% if 'username' in session %}
                 <h5>{{ session['username'] }}</h5>
                 <p>{{ session['email'] }}</p>
+                <p>&#128151 {{ likes }}</p>
             {% endif %}
         </div>
 

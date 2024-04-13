@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify, request, render_template, session, redirect, url_for 
+from flask import Blueprint, jsonify, request, render_template,flash, session, redirect, url_for 
 from neurelo import models 
 
-from configuration import posts_api 
+from configuration import posts_api, likes_api
 
 posts = Blueprint('posts', __name__, template_folder='templates', url_prefix='/posts')
 
@@ -61,3 +61,16 @@ def delete_post_by_post_id(post_id):
 def get_post_by_post_id(post_id):
     post = posts_api.find_posts_by_post_id((post_id), select=models.PostsSelectInput(related=True, scalars=True))
     return render_template('view_post.html', post=post.to_dict()['data'])
+
+@posts.route('/create_like/<int:post_id>', methods=['GET'])
+def create_like_by_post_id(post_id):
+    if 'user_id' not in session:
+        return redirect(url_for('authentication.login'))
+    user_id = session['user_id']
+    response = likes_api.create_one_likes(models.LikesCreateInput(
+        like=True,
+        likes_posts_ref={"connect": {"post_id": post_id}},
+        likes_users_ref={"connect": {"user_id": user_id}}
+    ))
+    print(response.to_dict())
+    return redirect(url_for('index'))
