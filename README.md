@@ -1,11 +1,32 @@
-# blog_application_with_neurelo
-blog application (CRUD) with neurelo
+# Blog Application with Neurelo
 
+This project is a blog application (CRUD) built with Neurelo.
 
-## Most of the code is for managing things, logic is just one  liner with neurelo 
+## Overview
 
-1. retrive user information by user_id ==> 
+The majority of the code in this application is focused on managing various aspects, while the logic itself is concise thanks to Neurelo's capabilities.
 
-2. retrive user information by user_information ==> authentication.py -> signup, login
+## Features
 
-   users_api.find_users(filter=models.UsersWhereInput.from_dict({"email": email, "username": username}))
+1. **Retrieve User Information**
+   - By user_id
+   - By user_information (authentication required)
+     - Includes functionality for signup and login in `authentication.py`
+
+2. **Retrieve Posts**
+   - All posts with related information (likes, comments, tags)
+
+3. **Retrieve User's Posts**
+   - Requires authentication
+   - Option to add, delete, and edit posts for authorized users
+
+4. **Likes and Comments**
+   - Display likes and comments for each post
+
+5. **Add and View Comments**
+   - Users can add comments and view existing comments on posts
+
+6. **Filter Posts**
+   - Filter by time (Today, Last Week, Last Month)
+   - Filter by tags (e.g., Technical, Machine Learning, Development, Neurelo)
+
