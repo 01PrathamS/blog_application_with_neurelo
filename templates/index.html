@@ -6,46 +6,36 @@
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .container1 {
-            border: 2px solid black;
-            border-radius: 12px; 
-            margin-top: 1%;
-            background-color: black;
-            color: white;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-        .container2 {
-            /* border: 2px solid white;
-            border-radius: 12px;  */
-            margin-top: 1%;
-            height: 150px;
-            /* margin-top:5%; */
-            margin-left: 6%;
-            margin-right: 4%;
-        }
-        .container3 {
-            /* border: 2px solid white;
-            border-radius: 12px;  */
-            /* margin-top: 1%; */
-            height: 100px;
-            margin-left: 4%;
-            margin-right: 4%;
-        }
-    
+      .main-wrapper {
+        display: grid;
+        grid-template-columns: auto auto;
+        max-width: 1200px;
+        margin: 0 10%;
+        color: white;
+        margin-top: 4rem;
+      }
+      .container1 {
+        margin: 10px ;
+        padding: 20px 20px;
+        background: linear-gradient(to right, rgb(0, 0, 0), rgb(69, 69, 69)); /* Gradient from red to orange */
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
     </style>
 </head>
 <body>
     {% include 'navbar.html' %}
-    <div>  
+    <div class="main-wrapper">  
         {% for post in posts %}
             <div class="container1" >
-                <h1 style="margin-left: 7%; margin-top:2%;">{{ post.posts_users_ref.username }}</h1>
+                <h3 >&#129458 {{ post.posts_users_ref.username }}</h1>
                 <div class="container2">
                     <h1 class="display-4 font-weight-bold">{{ post.title }}</h1>
                     {% if post.content|length > 100 %}
                         <p>{{ post.content[:100] }}...</p>
-                        <button class="btn btn-link btn-sm read-more">Read More</button>
+                        <!-- <button class="btn btn-link btn-sm read-more">Read More</button> -->
                     {% else %}
                         <p>{{ post.content }}</p>
                     {% endif %}

@@ -7,14 +7,21 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        .main-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
         body {
-            background-color: black;
+            background: linear-gradient(to right, rgb(0, 0, 0), rgb(69, 69, 69)); /* Gradient from red to orange */
         }
         .container1 {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.114);
             margin: 10%;
-            border: 1px solid black;
+            border: 1px solid rgb(255, 255, 255);
             border-radius: 20px;
+            width: 70%;
         }
         .box {
             padding-left: 10%;
@@ -28,19 +35,22 @@
     </style>
 </head>
 <body>
-   <div class="container1">
-    <div class="box">
-        <div class="container2">
-            <h1>{{ post.title }}</h1>
-        </div>
-        <div class="container3"> 
-            <p>{{ post.content }}</p>
-        </div>
-        
+    <div class="main-wrapper">
+
+        <div class="container1">
+            <div class="box">
+                <div class="container2">
+                    <h1>{{ post.title }}</h1>
+                </div>
+                <div class="container3"> 
+                    <p>{{ post.content }}</p>
+                </div>
+                
+            </div>
+            <div style="padding-bottom: 5%; padding-right: 7%;padding-left: 10%;">
+                <a href="{{ url_for('index') }}" class="btn btn-dark">Back</a>
+            </div>
+        </div> 
     </div>
-    <div style="padding-bottom: 5%; padding-right: 7%;padding-left: 10%;">
-    <a href="{{ url_for('index') }}" class="btn btn-dark">Back</a>
-    </div>
-</div> 
 </body>
 </html>

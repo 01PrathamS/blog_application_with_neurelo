@@ -24,7 +24,7 @@ def index():
         return render_template('index.html', posts=posts) 
     else: 
         return redirect(url_for('authentication.login'))
-    
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=24644)
