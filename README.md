@@ -30,3 +30,8 @@ The majority of the code in this application is focused on managing various aspe
    - Filter by time (Today, Last Week, Last Month)
    - Filter by tags (e.g., Technical, Machine Learning, Development, Neurelo)
 
+## ScreenShots 
+
+![Homepage](/images/blog_main.PNG)
+![LoginPage](/images/login_page.PNG)
+![User'sPostsPage](/images/post_by_user.PNG)
