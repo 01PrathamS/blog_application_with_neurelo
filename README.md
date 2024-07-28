@@ -1,3 +1,5 @@
+![Homepage](/images/blog_main.PNG)
+
 # Blog Application with Neurelo
 
 This project is a blog application (CRUD) built with Neurelo.
@@ -32,6 +34,5 @@ The majority of the code in this application is focused on managing various aspe
 
 ## ScreenShots 
 
-![Homepage](/images/blog_main.PNG)
 ![LoginPage](/images/login_page.PNG)
 ![User'sPostsPage](/images/post_by_user.PNG)
